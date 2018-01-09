@@ -11,22 +11,22 @@ import {
   Menu,
   Segment,
   Visibility,
+  Form
 } from 'semantic-ui-react'
 
 const FixedMenu = () => (
-  <Menu fixed='top' size='large'>
+  <Menu fixed='top' size='large' >
     <Container>
-      <Menu.Item as='a' active>Home</Menu.Item>
-      <Menu.Item as='a'>Work</Menu.Item>
-      <Menu.Item as='a'>Company</Menu.Item>
-      <Menu.Item as='a'>Careers</Menu.Item>
+    <Menu.Item as='a' active>Home</Menu.Item>
+    <Menu.Item as='a'>About Me</Menu.Item>
+    <Menu.Item as='a'>Services</Menu.Item>
       <Menu.Menu position='right'>
-        <Menu.Item className='item'>
-          <Button as='a'>Log in</Button>
-        </Menu.Item>
-        <Menu.Item>
-          <Button as='a' primary>Sign Up</Button>
-        </Menu.Item>
+
+    <Menu.Item as='a'>Contact</Menu.Item>
+      {/* <Button primary size='large'>
+        <Icon name='call' />
+        Let's Talk
+      </Button> */}
       </Menu.Menu>
     </Container>
   </Menu>
@@ -37,6 +37,10 @@ export default class HomepageLayout extends Component {
 
   hideFixedMenu = () => this.setState({ visible: false })
   showFixedMenu = () => this.setState({ visible: true })
+
+  calpopup = () => {
+    window.Calendly.showPopupWidget('https://calendly.com/timosolo/30min');
+  }
 
   render() {
     const { visible } = this.state
@@ -53,18 +57,19 @@ export default class HomepageLayout extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em' }}
+            style={{ minHeight: '100vh', padding: '1em 0em', background:'url(bg.png) no-repeat center bottom', backgroundSize:'cover' }}
             vertical
           >
             <Container>
               <Menu inverted pointing secondary size='large'>
                 <Menu.Item as='a' active>Home</Menu.Item>
-                <Menu.Item as='a'>Work</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
+                <Menu.Item as='a'>About Me</Menu.Item>
+                <Menu.Item as='a'>Services</Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a' inverted>Log in</Button>
-                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>Sign Up</Button>
+                <Button primary inverted size='huge'>
+                  <Icon name='call' />
+                  Let's Talk
+                </Button>
                 </Menu.Item>
               </Menu>
             </Container>
@@ -72,20 +77,22 @@ export default class HomepageLayout extends Component {
             <Container text>
               <Header
                 as='h1'
-                content='Imagine-a-Company'
                 inverted
-                style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
-              />
+                style={{ fontSize: '1.7em', fontWeight: 'normal', marginBottom: 0, marginTop: '30vh' }}
+              >
+              Helping Non-profit organisations...
+              </Header>
               <Header
                 as='h2'
-                content='Do whatever you want when you want to.'
                 inverted
-                style={{ fontSize: '1.7em', fontWeight: 'normal' }}
-              />
-              <Button primary size='huge'>
-                Get Started
-                <Icon name='right arrow' />
-              </Button>
+                style={{ fontSize: '2em', fontWeight: 'normal', marginBottom: '2em' }}
+              >
+              ... make a BIGGER impact!
+              </Header>
+              {/* <Button primary inverted size='huge'>
+                <Icon name='call' />
+                Let's Talk
+              </Button> */}
             </Container>
           </Segment>
         </Visibility>
@@ -94,14 +101,19 @@ export default class HomepageLayout extends Component {
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column width={8}>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Help Companies and Companions</Header>
+                <Header as='h3' style={{ fontSize: '2em' }}>Hi, I'm Timothy</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  We can give your company superpowers to do things that they never thought possible. Let us delight
-                  your customers and empower your needs... through pure data analytics.
+                I've been working in the tech startup world for over 10 years, 
+                but my passion has always been to help NPO's be more effective by leveraging technology.
                 </p>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
+                <Header as='h3' style={{ fontSize: '2em' }}>Think of me as your on-call&nbsp;<abbr title="Chief Technology Officer" >CTO</abbr></Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
+                You're focused on real people and real problems. 
+                You dont have time to build a website or research social media marketing techniques.
+                </p>
+
+                <p style={{ fontSize: '1.33em' }}>
+                  Schedule a <b>free</b> call with me and lets see how tech can help you do more.
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
@@ -109,61 +121,100 @@ export default class HomepageLayout extends Component {
                   bordered
                   rounded
                   size='large'
-                  src='/assets/images/wireframe/white-image.png'
+                  src='http://timosolo.me/images/me.jpg'
                 />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column textAlign='center'>
-                <Button size='huge'>Check Them Out</Button>
+                <Button primary  size='huge'>
+                  <Icon name='call' />
+                  Let's Talk
+                </Button>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment style={{ padding: '0em' }} vertical>
+        <Segment inverted style={{ padding: '0em' }} vertical>
           <Grid celled='internally' columns='equal' stackable>
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as='h3' style={{ fontSize: '2em' }}>"What a Company"</Header>
-                <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+                <Header inverted as='h3' style={{ fontSize: '1.33em' }}><i>We really appreciate your help to these surveys and the project as a whole. Indeed you are the "GURU"</i></Header>
+                <p style={{ fontSize: '1.33em' }}><b>Brian Mwiya</b> @ <a target="new" href='https://worldrenew.net'>World Renew</a></p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as='h3' style={{ fontSize: '2em' }}>"I shouldn't have gone with their competitor."</Header>
+                <Header inverted as='h3' style={{ fontSize: '1.33em' }}><i>Timothy helped us set up our domains and email addresses so we dont communicate with non-professional looking gmail addresses!</i></Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  <Image avatar src='/assets/images/avatar/large/nan.jpg' />
-                  <b>Nan</b> Chief Fun Officer Acme Toys
+                  <b>David Mendes</b> @ Christ Centred Community
                 </p>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment style={{ padding: '8em 0em' }} vertical>
+        <Segment style={{ paddingBottom: '8em' }} vertical>
           <Container text>
-            <Header as='h3' style={{ fontSize: '2em' }}>Breaking The Grid, Grabs Your Attention</Header>
-            <p style={{ fontSize: '1.33em' }}>
-              Instead of focusing on content creation and hard work, we have learned how to master the art of doing
-              nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic
-              and worth your attention.
-            </p>
-            <Button as='a' size='large'>Read More</Button>
             <Divider
               as='h4'
               className='header'
               horizontal
               style={{ margin: '3em 0em', textTransform: 'uppercase' }}
             >
-              <a href='#'>Case Studies</a>
+              <a href='#'>Services</a>
             </Divider>
-            <Header as='h3' style={{ fontSize: '2em' }}>Did We Tell You About Our Bananas?</Header>
+
+
+            <Header as='h3' style={{ fontSize: '2em' }}>Tech Advisor</Header>
             <p style={{ fontSize: '1.33em' }}>
-              Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but it's really
-              true.
-              It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
+              A monthly retainer to pick my brain about anything tech related. How can I help you leverage your efforts.
             </p>
-            <Button as='a' size='large'>I'm Still Quite Interested</Button>
+
+            <Header as='h3' style={{ fontSize: '2em' }}>Website Package</Header>
+            <p style={{ fontSize: '1.33em' }}>
+            Building a website is easy. Really, you can do it yourself for free, but if you want to really make a difference a website can open 100 new doors for your organsiation.
+            </p>
+
+            <Header as='h3' style={{ fontSize: '2em' }}>Google Suite (Email, Calendar, Drive etc)</Header>
+            <p style={{ fontSize: '1.33em' }}>
+            Did you know google gives registered non-profits gsuites for free in many countries (including South Africa)? 
+            
+            Let me help you register your organisation and show you how to maximise the potential of these essential tools!
+            </p>
           </Container>
         </Segment>
-        <Segment inverted vertical style={{ padding: '5em 0em' }}>
+
+        <Segment inverted vertical>
+          <Grid celled='internally' columns='equal' stackable>
+            <Grid.Row textAlign='center'>
+              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <Header inverted as='h3'>Schedule a 30 min free call</Header>
+                <p>
+                  Not sure where to start?<br/>Lets chat about your website and other systems which 
+                  can propel your organisation to the next level!
+                </p>
+                <p>
+                  There are no obligations or costs.
+                </p>
+                <Button inverted primary onClick={this.calpopup}>Schedule a call</Button>
+              </Grid.Column>
+              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <Header inverted as='h3'>Email me</Header>
+                <p>
+                  To ask about my services, and how I can add value to your organisation, please email me and we can discuss in detail.
+                </p>
+                <Form inverted >
+        <Form.Group widths='equal'>
+          <Form.Input label='Name' placeholder='Full name' />
+          <Form.Input label='Email' placeholder='Email Address' />
+        </Form.Group>
+        <Form.TextArea label='Message' placeholder='Tell us more about you...' />
+        <Form.Button inverted primary >Send Mail</Form.Button>
+      </Form>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+
+        {/* <Segment inverted vertical style={{ padding: '5em 0em' }}>
           <Container>
             <Grid divided inverted stackable>
               <Grid.Row>
@@ -192,7 +243,7 @@ export default class HomepageLayout extends Component {
               </Grid.Row>
             </Grid>
           </Container>
-        </Segment>
+        </Segment> */}
       </div>
     )
   }
